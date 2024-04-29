@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import "package:flutter/widgets.dart";
 import "package:flutter_gymapp/Models/exercicio_model.dart";
 import "package:flutter_gymapp/Models/sentimento_model.dart";
+import "package:flutter_gymapp/_comum/cores.dart";
 
 class ExercicioTela extends StatelessWidget {
   ExercicioTela({super.key});
@@ -19,9 +19,26 @@ class ExercicioTela extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.blue,
         appBar: AppBar(
-          title: Text("${exercicioModelo.name} - ${exercicioModelo.treino}"),
-          backgroundColor: Colors.blue,
-        ),
+            title: Column(
+              children: [
+                Text(exercicioModelo.name,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                        color: Colors.white)),
+                Text(
+                  exercicioModelo.treino,
+                  style: const TextStyle(fontSize: 15, color: Colors.white),
+                )
+              ],
+            ),
+            backgroundColor: Cores.azulEscuro,
+            centerTitle: true,
+            elevation: 0,
+            toolbarHeight: 72,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadiusDirectional.vertical(
+                    bottom: Radius.circular(32)))),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             print("button add was pressed");
@@ -44,7 +61,8 @@ class ExercicioTela extends StatelessWidget {
                       onPressed: () {},
                       child: const Text("Enviar foto"),
                     ),
-                    ElevatedButton(onPressed: (){}, child: const Text("Remover Foto"))
+                    ElevatedButton(
+                        onPressed: () {}, child: const Text("Remover Foto"))
                   ],
                 ),
               ),
@@ -75,10 +93,13 @@ class ExercicioTela extends StatelessWidget {
                 children: List.generate(listaSentimentos.length, (index) {
                   return ListTile(
                     contentPadding: EdgeInsets.zero,
-                    title: Text(listaSentimentos[index].sentindo), 
+                    title: Text(listaSentimentos[index].sentindo),
                     subtitle: Text(listaSentimentos[index].data),
                     leading: const Icon(Icons.double_arrow),
-                    trailing: IconButton(icon: const Icon(Icons.delete, color: Colors.red), onPressed: (){},),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete, color: Colors.red),
+                      onPressed: () {},
+                    ),
                   );
                 }),
               )

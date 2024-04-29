@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gymapp/Screens/autenticacao_tela.dart';
 import 'package:flutter_gymapp/Screens/exercicio_tela.dart';
 
 void main() {
@@ -9,13 +10,6 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: ExercicioTela()
-    );
+    return const MaterialApp(home: AutenticacaoTela());
   }
 }
